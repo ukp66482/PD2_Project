@@ -1,0 +1,10 @@
+Update Log for beatMapGenerator.ipynb
+Version 0 - June 10, 2024
+
+Core Functionality:
+Loading Audio Files: Ability to load audio files using librosa.
+Onset Detection: Detects onsets in the audio signal and converts onset frames to time.
+Plotting: Plots the waveform of the audio signal and marks the detected onsets with vertical lines.
+
+Enhancements:
+Accuracy Improvement: Fine-tuned hop_length and backtrack parameters to improve the accuracy of onset detection.
