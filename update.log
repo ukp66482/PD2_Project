@@ -8,3 +8,18 @@ Plotting: Plots the waveform of the audio signal and marks the detected onsets w
 
 Enhancements:
 Accuracy Improvement: Fine-tuned hop_length and backtrack parameters to improve the accuracy of onset detection.
+
+=======================================================================================================================
+
+Update Log for beatMapGenerator.ipynb
+Version 1 - June 11, 2024
+
+Core Functionality:
+
+Button Mapping:
+calculate button values based on note characters.
+Mapped detected notes to corresponding button values.
+
+Beat Map Generation:
+Generated a list of beat events with timestamps, frequencies, closest notes, and button values.
+Stored the beat map in a structured format for further use.
