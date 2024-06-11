@@ -23,3 +23,18 @@ Mapped detected notes to corresponding button values.
 Beat Map Generation:
 Generated a list of beat events with timestamps, frequencies, closest notes, and button values.
 Stored the beat map in a structured format for further use.
+
+=======================================================================================================================
+
+Update Log for beatMapGenerator.py
+Version 2 - June 12, 2024
+
+Core Functionality Updates:
+
+File Conversion:
+Converted the project from Jupyter Notebook (.ipynb) format to a Python script (.py) format for better integration and automation.
+
+Beat Map Generation:
+Enhanced the generation of beat events with precise timestamps (formatted to three decimal places), frequencies, closest notes, and button values.
+Implemented functionality to write the beat map to a CSV file, containing only the time and button values for each beat event.
+Stored the beat map in a structured format for further use and analysis.
