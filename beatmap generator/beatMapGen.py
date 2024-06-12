@@ -28,7 +28,7 @@ notes = [
 ]
 
 audio_name = 'star'
-audio_path = audio_name +'.mp3'
+audio_path = audio_name + '.mp3'
 y, sr = librosa.load(audio_path)
 
 S = np.abs(librosa.stft(y))
@@ -104,12 +104,9 @@ for onset, dom_freq in zip(filtered_onsets, dominant_frequencies):
 #for key in keys:
 #    print(f"Time: {key['time']:.4f}s, Frequency: {key['frequency']:.2f} Hz, Note: {key['note']}, Button: {key['button']}")
 
-output_file = audio_name +'_keys.csv'
+output_file = audio_name +'_keys.txt'
 
-with open(output_file, 'w', newline='') as csvfile:
-    fieldnames = ['time', 'button']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-    writer.writeheader()
+with open(output_file, 'w') as file:
     for key in keys:
-        writer.writerow({'time': f"{key['time']:.3f}", 'button': key['button']})
+        file.write(f"{key['time']:.3f} {key['button']}\n")
