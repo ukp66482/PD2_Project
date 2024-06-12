@@ -13,7 +13,7 @@ notes = [
     ('C8', 4186), ('D8', 4699), ('E8', 5274), ('F8', 5588), ('G8', 6272), ('A8', 7040), ('B8', 7902)
 ]
 
-directory = './'
+directory = './src/main/resources'
 audio_files = [f for f in os.listdir(directory) if f.endswith('.mp3')]
 
 def process_audio_file(audio_path):
@@ -54,7 +54,7 @@ def process_audio_file(audio_path):
 
     return keys
 
-output_file = 'beatmap.txt'
+output_file = './src/main/resources/beatmap.txt'
 with open(output_file, 'w') as file:
     for audio_file in audio_files:
         audio_path = os.path.join(directory, audio_file)
