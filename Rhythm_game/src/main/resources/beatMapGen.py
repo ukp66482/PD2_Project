@@ -54,7 +54,7 @@ def process_audio_file(audio_path):
 
     return keys
 
-output_file = 'beatmap.txt'
+output_file = 'src/main/resources/beatmap.txt'
 with open(output_file, 'w') as file:
     for audio_file in audio_files:
         audio_path = os.path.join(directory, audio_file)

@@ -11,18 +11,12 @@ import javafx.stage.Stage;
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
 import javafx.util.Duration;
-
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.TimeZone;
-import java.util.Date;
 import java.util.stream.Collectors;
-
-import java.text.SimpleDateFormat;
 
 import java.io.IOException;
 import java.io.File;
@@ -38,8 +32,8 @@ public class Main extends Application {
     private double fps = 10; // 每秒帧数
     private double fallTimeInSeconds = fallDistance / (movementBit * (1000/fps));
 
-    private String filePath="beatmaps/beatmap.txt";
-    private String musicPath="beatmaps/star.mp3";
+    private String filePath="src/main/resources/beatmap.txt";
+    private String musicPath="src/main/resources/star.mp3";
 
     private Label timerLabel;
     private long startTime;
@@ -53,6 +47,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        //BeatMapGen.beatMapGenerator();
         playArea = new Pane();
 
         setupTriggers();
