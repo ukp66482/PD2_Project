@@ -108,7 +108,7 @@ public class Main extends Application {
         stage.setTitle("Rhythm Game");
         stage.setScene(scene);
         stage.show();
-
+        
         setupMediaPlayer();
         startTimerWithOffset();
         startGame();
@@ -137,13 +137,14 @@ public class Main extends Application {
             for (String line : lines) {
                 String[] parts = line.split(" ");
                 double timeInSeconds = Double.parseDouble(parts[0]);
-                int columnIndex = Integer.parseInt(parts[1]);
+                int columnIndex = Integer.parseInt(parts[1])-1;
     
                 // 将下落时间加到指定的生成时间上
                 double adjustedTimeInSeconds = timeInSeconds ;
     
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(adjustedTimeInSeconds), e -> generateBlock(columnIndex)));
                 timeline.play();
+                
             }
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
@@ -186,6 +187,7 @@ public class Main extends Application {
         }));
         delayTimeline.play();
     }
+
     private void startRealTimeTimer(long startTime) {
         Timeline realTimeTimeline = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             long currentTime = System.currentTimeMillis();
@@ -215,16 +217,17 @@ public class Main extends Application {
     
         Timeline fall = new Timeline(new KeyFrame(Duration.millis(fps), e -> {
             block.setY(block.getY() + movementBit);
-            if (block.getY() > playArea.getHeight()) {
+            /*if (block.getY() > playArea.getHeight()) {
                 if ("active".equals(block.getUserData())) {
                     block.setUserData("counted");
                     updateScore(false);
                 }
                 playArea.getChildren().remove(block);
-            }
+            }*/
         }));
         fall.setCycleCount(Timeline.INDEFINITE);
         fall.play();
+        System.out.println(System.currentTimeMillis()); 
     }
     
     
