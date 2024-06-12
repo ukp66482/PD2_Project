@@ -42,6 +42,7 @@ public class Main extends Application {
     private String musicPath="beatmaps/star.mp3";
 
     private Label timerLabel;
+    private long startTime;
 
     private MediaPlayer mediaPlayer;
     private Timeline clock;
@@ -136,6 +137,7 @@ public class Main extends Application {
 
     private void startTimerWithOffset() {
         // 设置计时器从 0 开始
+        long startTime = System.currentTimeMillis();
         
         // 延迟开始音乐和计时器
         Timeline delayTimeline = new Timeline(new KeyFrame(Duration.seconds(fallTimeInSeconds), e -> {
@@ -160,6 +162,8 @@ public class Main extends Application {
         long hours = (millis / (1000 * 60 * 60)) % 24;
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
+
+
 
 
     private void generateBlock(int columnIndex) {

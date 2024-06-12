@@ -104,7 +104,7 @@ for onset, dom_freq in zip(filtered_onsets, dominant_frequencies):
 #for key in keys:
 #    print(f"Time: {key['time']:.4f}s, Frequency: {key['frequency']:.2f} Hz, Note: {key['note']}, Button: {key['button']}")
 
-output_file = audio_name +'_keys.txt'
+output_file = 'beatmap.txt'
 
 
 with open(output_file, 'w') as file:
