@@ -1,12 +1,19 @@
 package org.example;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
@@ -46,6 +53,44 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        primaryStage.setTitle("別踩白塊兒");
+
+        // 创建按钮
+        Button startGameButton = new Button("開始遊戲");
+        Button loadMusicButton = new Button("讀取音樂");
+        startGameButton.setMinSize(200, 60);
+        loadMusicButton.setMinSize(200, 60);
+        startGameButton.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        loadMusicButton.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+        // 设置按钮的动作事件
+        startGameButton.setOnAction(event -> {
+            System.out.println("游戏开始!");
+            switchToGameScreen(primaryStage);
+            // 这里添加开始游戏的逻辑
+        });
+
+        loadMusicButton.setOnAction(event -> {
+           BeatMapGen.beatMapGenerator();
+        });
+
+        VBox vbox = new VBox(20, startGameButton, loadMusicButton);
+        vbox.setAlignment(Pos.CENTER);
+
+        // 创建一个 StackPane 使 VBox 居中
+        StackPane root = new StackPane(vbox);
+        root.setAlignment(Pos.CENTER);
+        root.setPrefSize(800, 600);
+
+
+        Scene Stratscene = new Scene(root);
+        primaryStage.setScene(Stratscene);
+
+        primaryStage.show();
+    }
+    
+
+
+    private void switchToGameScreen(Stage stage) {
         //BeatMapGen.beatMapGenerator();
         playArea = new Pane();
 
@@ -60,15 +105,16 @@ public class Main extends Application {
         Scene scene = new Scene(playArea, 800, 600);
         scene.setOnKeyPressed(event -> handleKeyPress(event.getCode()));
 
-        primaryStage.setTitle("Rhythm Game");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("Rhythm Game");
+        stage.setScene(scene);
+        stage.show();
 
         setupMediaPlayer();
         startTimerWithOffset();
         startGame();
+        // 将新的场景设置到舞台上
+        stage.setScene(scene);
     }
-
 
     private void setupTriggers() {
         triggers = new Rectangle[7];  // 初始化为 7 个触发区
@@ -205,7 +251,8 @@ public class Main extends Application {
             for (Rectangle block : blocks) {
                 if (block.getX() >= index * (800.0 / triggers.length) && block.getX() < (index + 1) * (800.0 / triggers.length) && block.getY() + block.getHeight() >= triggers[index].getY()) {
                     block.setUserData("hit"); // 标记方块已被击中
-                    playArea.getChildren().remove(block);
+                    //playArea.getChildren().remove(block);
+                    block.setFill(Color.GRAY);
                     updateScore(true);
                     break;
                 }
