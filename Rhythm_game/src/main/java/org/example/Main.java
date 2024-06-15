@@ -37,7 +37,7 @@ public class Main extends Application {
     private double fallTimeInSeconds = fallDistance / (movementBit * (1000/fps));
 
     private String filePath="src/main/resources/beatmap.txt";
-    private String musicPath="src/main/resources/star.mp3";
+    private String musicPath="src/main/resources/music.mp3";
 
     private Label timerLabel;
     private long startTime;
