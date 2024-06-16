@@ -3,7 +3,7 @@ package org.example;
 import java.io.IOException;
 
 public class BeatMapGen {
-    public static void beatMapGenerator(){
+    public static boolean beatMapGenerator(){
         String exePath = "src/main/resources/beatMapGen.exe";
         try {
 
@@ -11,8 +11,10 @@ public class BeatMapGen {
 
             int exitCode = process.waitFor();
             System.out.println("Process exited with code: " + exitCode);
+            return true;
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+            return false;
         }
     }
 }

@@ -37,7 +37,13 @@ public class Main extends Application {
         });
 
         loadMusicButton.setOnAction(event -> {
-            BeatMapGen.beatMapGenerator();
+            loadMusicButton.setText("讀取中");
+            
+            if(BeatMapGen.beatMapGenerator()){
+                loadMusicButton.setText("讀取完成");
+            }else{
+                loadMusicButton.setText("讀取失敗");
+            }
         });
 
         VBox vbox = new VBox(20, startGameButton, loadMusicButton);
@@ -55,7 +61,7 @@ public class Main extends Application {
                 new BackgroundSize(100, 100, true, true, false, true));
         root.setBackground(new Background(myBI));
 
-
+        
         Scene startScene = new Scene(root);
         primaryStage.setScene(startScene);
 
@@ -78,7 +84,15 @@ public class Main extends Application {
         });
 
         loadMusicButton.setOnAction(event -> {
-            BeatMapGen.beatMapGenerator();
+            loadMusicButton.setText("讀取中");
+
+            if(BeatMapGen.beatMapGenerator()){
+                loadMusicButton.setText("讀取完成");
+            }else{
+                loadMusicButton.setText("讀取失敗");
+            }
+            
+            
         });
 
         VBox vbox = new VBox(20, startGameButton, loadMusicButton);
