@@ -3,6 +3,8 @@ package org.example;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -37,12 +39,25 @@ public class Main extends Application {
         });
 
         loadMusicButton.setOnAction(event -> {
-            loadMusicButton.setText("讀取中");
+            
             
             if(BeatMapGen.beatMapGenerator()){
-                loadMusicButton.setText("讀取完成");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("完成");
+                alert.setHeaderText(null);
+                alert.setContentText("音樂讀取完成");
+
+                // Show the alert and wait for a user response
+                alert.showAndWait();
+                //loadMusicButton.setText("讀取完成");
             }else{
-                loadMusicButton.setText("讀取失敗");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("音樂讀取失敗!請再試一次");
+
+                // Show the alert and wait for a user response
+                alert.showAndWait();
             }
         });
 
@@ -61,7 +76,7 @@ public class Main extends Application {
                 new BackgroundSize(100, 100, true, true, false, true));
         root.setBackground(new Background(myBI));
 
-        
+
         Scene startScene = new Scene(root);
         primaryStage.setScene(startScene);
 
@@ -84,14 +99,24 @@ public class Main extends Application {
         });
 
         loadMusicButton.setOnAction(event -> {
-            loadMusicButton.setText("讀取中");
-
             if(BeatMapGen.beatMapGenerator()){
-                loadMusicButton.setText("讀取完成");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("完成");
+                alert.setHeaderText(null);
+                alert.setContentText("音樂讀取完成");
+
+                // Show the alert and wait for a user response
+                alert.showAndWait();
+                //loadMusicButton.setText("讀取完成");
             }else{
-                loadMusicButton.setText("讀取失敗");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("音樂讀取失敗!請再試一次");
+
+                // Show the alert and wait for a user response
+                alert.showAndWait();
             }
-            
             
         });
 
