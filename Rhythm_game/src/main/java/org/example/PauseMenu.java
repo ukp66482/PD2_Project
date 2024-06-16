@@ -50,6 +50,9 @@ public class PauseMenu {
         });
 
         mainMenuButton.setOnAction(event -> {
+            // 停止所有的Timeline
+            allTimelines.forEach(Timeline::stop);
+            allTimelines.clear();  // 清空列表
             stage.setScene(Main.createMainMenuScene(stage));
         });
 
@@ -59,4 +62,5 @@ public class PauseMenu {
         stage.setScene(pauseScene);
     }
 }
+
 
