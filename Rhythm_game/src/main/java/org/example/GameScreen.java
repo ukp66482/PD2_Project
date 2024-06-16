@@ -100,6 +100,10 @@ public class GameScreen {
 
     private static void startGame() {
         score = 0;
+        totalBlocks = 0;
+        hitBlocks = 0;
+        comboCount = 0;
+        maxComboCount = 0;
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));
 
