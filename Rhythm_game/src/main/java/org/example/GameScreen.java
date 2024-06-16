@@ -261,5 +261,10 @@ public class GameScreen {
             updateScore(false);
         }
     }
+    public static void resetTimerLabel() {
+        if (timerLabel != null) {
+            timerLabel.setText("00:00:00");
+        }
+    }
 }
 

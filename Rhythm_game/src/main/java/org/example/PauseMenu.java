@@ -53,6 +53,10 @@ public class PauseMenu {
             // 停止所有的Timeline
             allTimelines.forEach(Timeline::stop);
             allTimelines.clear();  // 清空列表
+
+            // 重置時間標籤
+            GameScreen.resetTimerLabel();
+
             stage.setScene(Main.createMainMenuScene(stage));
         });
 
@@ -62,5 +66,4 @@ public class PauseMenu {
         stage.setScene(pauseScene);
     }
 }
-
 
