@@ -3,6 +3,8 @@ package org.example;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -20,7 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("別踩白塊兒");
+        primaryStage.setTitle("Rhythm Game");
 
         // 創建按鈕
         Button startGameButton = new Button("開始遊戲");
@@ -37,7 +39,26 @@ public class Main extends Application {
         });
 
         loadMusicButton.setOnAction(event -> {
-            BeatMapGen.beatMapGenerator();
+            
+            
+            if(BeatMapGen.beatMapGenerator()){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("完成");
+                alert.setHeaderText(null);
+                alert.setContentText("音樂讀取完成");
+
+                // Show the alert and wait for a user response
+                alert.showAndWait();
+                //loadMusicButton.setText("讀取完成");
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("音樂讀取失敗!請再試一次");
+
+                // Show the alert and wait for a user response
+                alert.showAndWait();
+            }
         });
 
         VBox vbox = new VBox(20, startGameButton, loadMusicButton);
@@ -78,7 +99,25 @@ public class Main extends Application {
         });
 
         loadMusicButton.setOnAction(event -> {
-            BeatMapGen.beatMapGenerator();
+            if(BeatMapGen.beatMapGenerator()){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("完成");
+                alert.setHeaderText(null);
+                alert.setContentText("音樂讀取完成");
+
+                // Show the alert and wait for a user response
+                alert.showAndWait();
+                //loadMusicButton.setText("讀取完成");
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("音樂讀取失敗!請再試一次");
+
+                // Show the alert and wait for a user response
+                alert.showAndWait();
+            }
+            
         });
 
         VBox vbox = new VBox(20, startGameButton, loadMusicButton);
