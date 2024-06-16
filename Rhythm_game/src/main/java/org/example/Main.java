@@ -20,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("別踩白塊兒");
+        primaryStage.setTitle("Rhythm Game");
 
         // 創建按鈕
         Button startGameButton = new Button("開始遊戲");
