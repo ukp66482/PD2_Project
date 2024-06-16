@@ -99,6 +99,7 @@ public class GameScreen {
     }
 
     private static void startGame() {
+        score = 0;
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));
 
