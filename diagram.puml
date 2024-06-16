@@ -1,0 +1,44 @@
+@startuml
+package org.example {
+
+    class Main {
+        +start(Stage primaryStage)
+        +createMainMenuScene(Stage stage)
+        +main(String[] args)
+    }
+
+    class GameScreen {
+        +switchToGameScreen(Stage stage)
+        -setupTriggers()
+        -startGame()
+        -setupAccLabel()
+        -setupComboLabel()
+        -setupScoreLabel()
+        -updateScore(boolean hit)
+        -setupMediaPlayer(Stage stage, Scene scene)
+        -startTimerWithOffset()
+        -startRealTimeTimer(long startTime)
+        -formatTime(long millis)
+        -generateBlock(int columnIndex)
+        -handleKeyPress(KeyCode key)
+        +resetTimerLabel()
+    }
+
+    class PauseMenu {
+        +pauseGame(Stage stage, Scene gameScene, MediaPlayer mediaPlayer, Timeline clock, List<Timeline> allTimelines)
+    }
+
+    class EndScreen {
+        +endGame(Stage stage, Scene gameScene, int score)
+    }
+
+    class BeatMapGen {
+        +beatMapGenerator() : boolean
+    }
+
+    Main --> GameScreen : uses
+    Main --> EndScreen : uses
+    Main --> PauseMenu : uses
+    Main --> BeatMapGen : uses
+}
+@enduml
