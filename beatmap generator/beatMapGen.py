@@ -17,23 +17,26 @@ directory = './src/main/resources'
 audio_files = [f for f in os.listdir(directory) if f.endswith('.mp3')]
 
 def process_audio_file(audio_path):
-    y, sr = librosa.load(audio_path)
+    y, sr = librosa.load(audio_path)# y is the audio signal, sr is the sample rate
 
-    S = np.abs(librosa.stft(y))
-    frequencies = librosa.fft_frequencies(sr=sr)
+    S = np.abs(librosa.stft(y)) # S is a 2D array where each column represents the magnitude spectrum of a time window
 
-    onset_env = librosa.onset.onset_strength(y=y, sr=sr, aggregate=np.median)
+    frequencies = librosa.fft_frequencies(sr=sr) # frequencies is a 1D array containing the frequency values (in Hz) for each row in S
+
+    onset_env = librosa.onset.onset_strength(y=y, sr=sr, aggregate=np.median) # onset_env is a 1D array representing the strength of onsets over time
     onsets = librosa.onset.onset_detect(onset_envelope=onset_env, sr=sr, backtrack=True, units='time', hop_length=512)
+    # onsets is a 1D array containing the time (in seconds) of each detected onset event
 
+    # Filter out onsets that are too close to each other
     min_interval = 0.1  # in seconds
     filtered_onsets = [onsets[0]]
     for onset in onsets[1:]:
         if onset - filtered_onsets[-1] >= min_interval:
             filtered_onsets.append(onset)
 
+    # Extract the dominant spectrum of each onset
     onset_spectra = []
     dominant_frequencies = []
-
     for onset in filtered_onsets:
         onset_frame = librosa.time_to_frames(onset, sr=sr)
         spectrum = np.abs(S[:, onset_frame])
